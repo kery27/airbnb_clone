@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/Users/garcia/.local/share/virtualenvs/airbnb-clone-xEE1BxfV/bin/python",
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black"
+
+
+}
