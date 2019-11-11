@@ -5,8 +5,12 @@ class TimeStampedModel(models.Model):
 
     """Time Stamped Model"""
 
-    create = models.DateTimeField()
-    update = models.DateTimeField()
+    # 누가 자동으로 이 모델을 생성할 경우에 크리에이트에 시간을 생성해준다
+    # 누가 자동으로 업데이트 할경우에 시간을 저장해준다
+
+    #
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
 
     # 이 모델을 쓰는 다른 모델들... 어차피 얘는 상속용 공통 클래스 이므로
     # 걔내들이 모델을 생성한다. 데이터를 생성할거기 때문에
