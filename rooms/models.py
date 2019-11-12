@@ -65,6 +65,7 @@ class HouseRule(AbstractItem):
 
 
 # 사진은 룸아래 룸은 사용자 아래 위치한다.
+# 룸 클래스 위에 룸을 포린키로 물리면 룸을 인식 못하므로 스트링으로 바꿔줘야한다
 class Photo(core_models.TimeStampedModel):
     """Photo Model Definition"""
 

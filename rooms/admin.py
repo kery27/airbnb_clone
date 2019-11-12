@@ -8,7 +8,26 @@ from . import models
 class RoomAdmin(admin.ModelAdmin):
     """Item Admin Definition """
 
-    pass
+    list_display = (
+        "name",
+        "description",
+        "country",
+        "city",
+        "price",
+        "address",
+        "guest",
+        "beds",
+        "bedrooms",
+        "baths",
+        "check_in",
+        "check_out",
+        "instant_book",
+        "host",
+    )
+
+    list_filter = ("country", "city")
+
+    search_fields = ("^city", "host__username")
 
 
 # 룸타입을 어드민에 추가 해주는 작업..
