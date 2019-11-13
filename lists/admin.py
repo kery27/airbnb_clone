@@ -6,7 +6,9 @@ from . import models
 class ListAdmin(admin.ModelAdmin):
     """" List Admin Definition """
 
-    pass
+    list_display = ("user", "name", "count_rooms")
+
+    filter_horizontal = ("rooms",)
 
 
 # Register your models here.

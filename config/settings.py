@@ -23,6 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 개발인지 운영인지를 구분짓는 플래그래
+# 이값을 폴스로 바꾸면 404에러를 뱉고 트루면 어디가 에런지 알려주는것이라네
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -137,3 +139,13 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 AUTH_USER_MODEL = "users.User"
+
+
+# urls.py 에다가 이미지 폴더 경로와 주소 경로를 설정해주기위해 쓰임
+
+# 두개의 패스 컴포넌트를 같이 주면되는것.
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+print(BASE_DIR, "uploads")
+
+# http://127.0.0.1:8000/media/room_photos/ 처럼 된다
+MEDIA_URL = "/media/"

@@ -70,8 +70,8 @@ class Photo(core_models.TimeStampedModel):
     """Photo Model Definition"""
 
     caption = models.CharField(max_length=80)
-    file = models.ImageField()
-    room = models.ForeignKey("Room", on_delete=models.CASCADE)
+    file = models.ImageField(upload_to="room_photos")
+    room = models.ForeignKey("Room", related_name="photos", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.caption
@@ -95,12 +95,38 @@ class Room(core_models.TimeStampedModel):
     check_in = models.TimeField()
     check_out = models.TimeField()
     instant_book = models.BooleanField(default=False)
-    host = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
+    host = models.ForeignKey(
+        user_models.User, related_name="rooms", on_delete=models.CASCADE
+    )
     # room_type = models.ManyToManyField(RoomType, blank=True)
-    room_type = models.ForeignKey(RoomType, on_delete=models.SET_NULL, null=True)
-    amenities = models.ManyToManyField(Amenity, blank=True)
-    facilities = models.ManyToManyField(Facility, blank=True)
-    house_rules = models.ManyToManyField(HouseRule, blank=True)
+    room_type = models.ForeignKey(
+        RoomType, related_name="rooms", on_delete=models.SET_NULL, null=True
+    )
+    amenities = models.ManyToManyField(Amenity, related_name="rooms", blank=True)
+    facilities = models.ManyToManyField(Facility, related_name="rooms", blank=True)
+    house_rules = models.ManyToManyField(HouseRule, related_name="rooms", blank=True)
 
     def __str__(self):
         return self.name
+
+    # 전체에서 쓰일 리뷰의 전체 평균을 구하는 함수
+    # 룸과리뷰는 포린키로 물려있지 룸 -> 리뷰 관계이므로 room안에는 review_set이 있고 리뷰셋은 reviews로 바꿧지
+    # 따라서 룸을 리뷰한 라뷰에 접근이 가능하다.
+    # 방에 대한 리뷰들의 평균을 구하는게 레이팅 에버리지고 이건 리뷰모델안에 있다
+    # 방에 리뷰가 여러개가 달릴수 있으므로 전체의 평균을 구할때는 총 리뷰들의 합을 리뷰한갯수로 나눠야함
+    # 쿼리셋으로 가져온 올리뷰. 길이를 구하는 len으로 리뷰갯수를 구함
+
+    def total_rating(self):
+        all_reviews = self.reviews.all()
+        all_ratings = 0
+        for review in all_reviews:
+            all_ratings += review.rating_average()
+        return all_ratings / len(all_reviews)
+
+    # 저장할때 저장 말고 다른이벤트를 오버라이드 하는거야
+    # 저장할때 특정 행동을 하도록 여기에 다시쓰는거야.
+    # 모든곳에서 이 이벤트는 모델에 접근 할거기 때문에 발생가능하다
+    # 그래서 너가 어드민에서만 발생하길 원한다면 어드민 에서도 이기능을 쓸수 있다. 약간다름
+    def save(self, *args, **kwargs):
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwargs)

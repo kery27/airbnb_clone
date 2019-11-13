@@ -25,7 +25,7 @@ class User(AbstractUser):
     CURRUNCY_CHOICES = ((CURRENCY_USD, "USD"), (CURRENCY_KRW, "KRW"))
     LANGUAGE_CHOICES = ((LANGUAGE_ENGLISH, "English"), (LANGUAGE_KOREAN, "Korean"))
 
-    avatar = models.ImageField(blank=True)
+    avatar = models.ImageField(upload_to="avatas", blank=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
     bio = models.TextField(blank=True)
     birthdate = models.DateField(blank=True, null=True)

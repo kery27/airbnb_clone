@@ -21,5 +21,33 @@ class CustomUserAdmin(UserAdmin):
     """Custom User Admin"""
 
     fieldsets = UserAdmin.fieldsets + (
-        ("Garcia info", {"fields": ("avatar", "gender", "bio")}),
+        (
+            "Garcia info",
+            {
+                "fields": (
+                    "avatar",
+                    "gender",
+                    "bio",
+                    "birthdate",
+                    "language",
+                    "currency",
+                    "superhost",
+                )
+            },
+        ),
+    )
+    # 상속받은 클래스에 기본적으로 적용된 리스트 필터에 추가된 슈퍼호스트 필터
+    list_filter = UserAdmin.list_filter + ("superhost",)
+
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "language",
+        "currency",
+        "superhost",
+        "is_staff",
+        "is_superuser",
     )
