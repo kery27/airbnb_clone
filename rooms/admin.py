@@ -8,6 +8,13 @@ from . import models
 class RoomAdmin(admin.ModelAdmin):
     """Item Admin Definition """
 
+    fieldsets = (
+        ("Basic Info", {"fields": ("name", "description", "country", "address")}),
+        ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
+        ("Spaces", {"fields": ("guest", "beds", "bedrooms", "baths")}),
+        ("Last Details", {"fields": ("host",)}),
+    )
+
     list_display = (
         "name",
         "description",
@@ -22,12 +29,32 @@ class RoomAdmin(admin.ModelAdmin):
         "check_in",
         "check_out",
         "instant_book",
-        "host",
+        "count_amenities",
     )
 
-    list_filter = ("country", "city")
+    list_filter = (
+        "instant_book",
+        "host__superhost",
+        "host__gender",
+        "room_type",
+        "amenities",
+        "facilities",
+        "city",
+        "country",
+    )
 
     search_fields = ("^city", "host__username")
+
+    filter_horizontal = (
+        "amenities",
+        "facilities",
+        "house_rules",
+    )
+    # 셀프는 룸 옵젝트고 , obj는 현재줄을 말한다 currunt row
+    def count_amenities(self, obj):
+        return obj.amenities.all()
+
+    count_amenities.short_description = "hello kitty!"
 
 
 # 룸타입을 어드민에 추가 해주는 작업..
