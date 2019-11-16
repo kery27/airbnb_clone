@@ -20,6 +20,10 @@ class RoomAdmin(admin.ModelAdmin):
         ("Basic Info", {"fields": ("name", "description", "country", "address")}),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("guest", "beds", "bedrooms", "baths")}),
+        (
+            "More About the Space",
+            {"fields": ("amenities", "facilities", "house_rules")},
+        ),
         ("Last Details", {"fields": ("host",)}),
     )
 
@@ -61,6 +65,7 @@ class RoomAdmin(admin.ModelAdmin):
         "facilities",
         "house_rules",
     )
+
     # 어드민에서의 저장시 이벤트를 다시씀
     # 리퀘스트를 가지고와서 어떤 유저가 저장을 하려고 하는지 확인 할 수도 있고
     # 어드민이 변경될경우에 메일로 보내서 추적할 수도 있다

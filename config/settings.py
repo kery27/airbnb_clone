@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-THIRD_PARTY_APPS = ["django-countries"]
+THIRD_PARTY_APPS = ["django-countries", "django-seed"]
 
 DJANGO_APPS = [
     "django.contrib.admin",
