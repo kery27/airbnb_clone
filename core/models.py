@@ -1,8 +1,7 @@
 from django.db import models
 
-# Create your models here.
-class TimeStampedModel(models.Model):
 
+class TimeStampedModel(models.Model):
     """Time Stamped Model"""
 
     # 누가 자동으로 이 모델을 생성할 경우에 크리에이트에 시간을 생성해준다

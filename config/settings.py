@@ -25,9 +25,12 @@ SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 # SECURITY WARNING: don't run with debug turned on in production!
 # 개발인지 운영인지를 구분짓는 플래그래
 # 이값을 폴스로 바꾸면 404에러를 뱉고 트루면 어디가 에런지 알려주는것이라네
+
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = "*"
 
 
 # Application definition

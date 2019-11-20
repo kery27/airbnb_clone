@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django_countries.fields import CountryField
 from core import models as core_models
 from users import models as user_models
@@ -84,11 +85,12 @@ class Room(core_models.TimeStampedModel):
 
     name = models.TextField(max_length=140)
     description = models.TextField()
-    country = CountryField()
+    country = CountryField(null=True, blank=True)
     city = models.CharField(max_length=80)
     price = models.IntegerField()
     address = models.CharField(max_length=140)
-    guest = models.IntegerField()
+    # guest = models.IntegerField()
+    guest = models.IntegerField(help_text="How many people will be staying?")
     beds = models.IntegerField()
     bedrooms = models.IntegerField()
     baths = models.IntegerField()
@@ -132,3 +134,9 @@ class Room(core_models.TimeStampedModel):
     def save(self, *args, **kwargs):
         self.city = str.capitalize(self.city)
         super().save(*args, **kwargs)
+
+    # 절대경로url을 가져오는 함수
+    def get_absolute_url(self):
+        # return ""/potato""
+        # 넴스페이스 네임을 이용한다
+        return reverse("rooms:detail", kwargs={"pk": self.pk})

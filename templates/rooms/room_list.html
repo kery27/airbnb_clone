@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 
 
-{% block page_name %}
+{% block page_title %}
     Home
-{% endblock page_name %}
+{% endblock page_title %}
 
 {% block content %}
 
     {{now}}
 
     {% for room in rooms  %}
-        <h1>{{room.name}} / ${{room.price}}</h1>
+       <h1>
+       <!--  <a href="/rooms/{{room.pk}}">-->
+       <!-- 상세 페이지로 가게끔 namespace, name을 이용해서 처리함-->
+            <a href="{% url "rooms:detail" room.pk %}">
+                {{room.name}} / ${{room.price}}
+            </a>
+        </h1> 
     {% endfor %}
 
     <h5>

@@ -17,12 +17,15 @@ class RoomAdmin(admin.ModelAdmin):
     inlines = (PhotoInline,)
 
     fieldsets = (
-        ("Basic Info", {"fields": ("name", "description", "country", "address")}),
+        (
+            "Basic Info",
+            {"fields": ("name", "description", "country", "city", "address")},
+        ),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("guest", "beds", "bedrooms", "baths")}),
         (
             "More About the Space",
-            {"fields": ("amenities", "facilities", "house_rules")},
+            {"fields": ("amenities", "facilities", "house_rules", "room_type")},
         ),
         ("Last Details", {"fields": ("host",)}),
     )

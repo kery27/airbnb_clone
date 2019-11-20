@@ -5,11 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block page_name %}{% endblock page_name %}| Nbnb</title>
+    <title>{% block page_title %}{% endblock page_title %}| Nbnb</title>
 </head>
 
 <body>
-    {% include "partials/header.html" %}
+    <!-- 헤더를 옮겨옴 -->
+    <header>
+      {% include "partials/nav.html" %}
+      {% block search-bar %}
+        <!-- 룸 네임스페이스의 서치라는 유알엘 네임을 갖는 함수를 호출 맞나?-->
+        <form method="get" action="{% url "rooms:search" %}">
+            <input name="city" placeholder="Search by City" />
+        </form>
+      {% endblock search-bar %}
+    </header>
     {% block content %}{% endblock content %}
     {% include "partials/footer.html" %}
 </body>
