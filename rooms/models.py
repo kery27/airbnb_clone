@@ -1,8 +1,11 @@
+from django.utils import timezone
 from django.db import models
 from django.urls import reverse
 from django_countries.fields import CountryField
 from core import models as core_models
 from users import models as user_models
+from cal import Calendar
+
 
 # Create your models here.
 # 추상 클래스를 만들어준건 룸타입을 추가 하기 위해서
@@ -124,7 +127,7 @@ class Room(core_models.TimeStampedModel):
         if len(all_reviews) > 0:
             for review in all_reviews:
                 all_ratings += review.rating_average()
-            return round(all_ratings / len(all_reviews))
+            return round(all_ratings / len(all_reviews), 2)
         return 0
 
     # 저장할때 저장 말고 다른이벤트를 오버라이드 하는거야
@@ -140,3 +143,31 @@ class Room(core_models.TimeStampedModel):
         # return ""/potato""
         # 넴스페이스 네임을 이용한다
         return reverse("rooms:detail", kwargs={"pk": self.pk})
+
+    def first_photo(self):
+        try:
+            (photo,) = self.photos.all()[:1]
+            return photo.file.url
+        except ValueError:
+            return None
+
+    def get_next_four_photos(self):
+        photos = self.photos.all()[1:5]
+        return photos
+
+    def get_beds(self):
+        if self.beds == 1:
+            return "1 bed"
+        else:
+            return f"{self.beds} beds"
+
+    def get_calendars(self):
+        now = timezone.now()
+        this_year = now.year
+        this_month = now.month
+        next_month = this_month + 1
+        if this_month == 12:
+            next_month = 1
+        this_month_cal = Calendar(this_year, this_month)
+        next_month_cal = Calendar(this_year, next_month)
+        return [this_month_cal, next_month_cal]

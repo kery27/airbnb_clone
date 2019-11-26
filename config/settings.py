@@ -141,6 +141,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 AUTH_USER_MODEL = "users.User"
 
 
@@ -148,7 +150,10 @@ AUTH_USER_MODEL = "users.User"
 
 # 두개의 패스 컴포넌트를 같이 주면되는것.
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-print(BASE_DIR, "uploads")
+# print(BASE_DIR, "uploads")
 
 # http://127.0.0.1:8000/media/room_photos/ 처럼 된다
 MEDIA_URL = "/media/"
+
+
+LOGIN_URL = "/users/login/"

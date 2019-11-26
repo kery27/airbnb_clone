@@ -1,11 +1,21 @@
-<header>
-    <a href="{% url "core:home" %}">Nbnb</a>
-    <ul>
-        {% if user.is_authenticated %}
-            <li><a href="{% url "users:logout" %}">Log out</a></li>
-        {% else %}
-            <li><a href="{% url "users:login" %}">Log in</a></li>
-            <li><a href="{% url "users:signup" %}">Sign up</a></li>
+<ul class="flex items-center text-sm font-medium h-full">
+    {% if user.is_authenticated %}
+        <li class="nav_link">
+            <a href="{% url 'users:switch-hosting' %}">
+                {% if request.session.is_hosting %}
+                    Stop hosting
+                {% else %}
+                    Start hosting
+                {% endif %}
+            </a>
+        </li>
+        {% if request.session.is_hosting %}
+            <li class="nav_link"><a href="{% url 'rooms:create' %}">Create Room</a></li>
         {% endif %}
-    </ul>
-</header> 
+        <li class="nav_link"><a href="{{user.get_absolute_url}}">Profile</a></li>
+        <li class="nav_link"><a href="{% url "users:logout" %}">Log out</a></li>
+    {% else %}
+        <li class="nav_link"><a href="{% url "users:login" %}">Log in</a></li>
+        <li class="nav_link"><a href="{% url "users:signup" %}">Sign up</a></li>
+    {% endif %}
+</ul>

@@ -7,31 +7,32 @@
 
 {% block content %}
 
-    {{now}}
+    <div class="container mx-auto pb-10">
+        
+        <!--<div class="rounded-lg bg-gray-800 -mx-40 h-50vh p-48 mb-12 bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1536315238512-4c8cebdaaf93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop)"></div>-->
+        <!--<div class="rounded-lg bg-gray-800 -mx-40 mb-12 p-166 bg-cover" style="background-image:url(https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop)"></div>-->
+        <div class="rounded-lg bg-gray-800 -mx-40 mb-12 p-166 bg-cover bg-bottom" style="background-image:url(https://images.unsplash.com/photo-1508881070183-8db4c3937880?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop)"></div>
+        
 
-    {% for room in rooms  %}
-       <h1>
-       <!--  <a href="/rooms/{{room.pk}}">-->
-       <!-- 상세 페이지로 가게끔 namespace, name을 이용해서 처리함-->
-            <a href="{% url "rooms:detail" room.pk %}">
-                {{room.name}} / ${{room.price}}
-            </a>
-        </h1> 
-    {% endfor %}
+        <div class="flex flex-wrap -mx-40 mb-10">
+        {% for room in rooms  %}
+            {% include 'mixins/room_card.html' with room=room %}
+        {% endfor %}
+        </div>
+        <div class="flex items-center justify-center mx-auto container">
+            {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}" class="text-gray-700">
+                    <i class="fas fa-arrow-left fa-lg"></i>
+                </a>
+            {% endif %}
 
-    <h5>
-    {% if page_obj.has_previous %}
-        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
-    {% endif %}
+            <span class="mx-3 font-medium text-lg">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
 
-    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-
-    {% if page_obj.has_next  %}
-        <a href="?page={{page_obj.next_page_number}}">Next</a>
-    {% endif %}
-
-
-    </h5>
-
-
+            {% if page_obj.has_next  %}
+                <a href="?page={{page_obj.next_page_number}}" class="text-gray-700">
+                    <i class="fas fa-arrow-right fa-lg"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
 {% endblock content %}
