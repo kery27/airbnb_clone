@@ -142,7 +142,9 @@ def github_callback(request):
 
 
 def kakao_login(request):
-    client_id = "1e31df58b6e10a05461687354ef415b8"
+    # client_id = ""
+    client_id = os.environ.get("KAKAO_ID")
+
     redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
@@ -157,7 +159,8 @@ def kakao_callback(request):
     try:
         code = request.GET.get("code")
 
-        client_id = "1e31df58b6e10a05461687354ef415b8"
+        # client_id = "1e31df58b6e10a05461687354ef415b8"
+        client_id = os.environ.get("KAKAO_ID")
         redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
         token_request = requests.get(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
