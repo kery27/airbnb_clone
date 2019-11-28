@@ -28,6 +28,10 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("users/", include("users.urls", namespace="users")),
     path("rooms/", include("rooms.urls", namespace="rooms")),
+    path("reservations/", include("reservations.urls", namespace="reservations")),
+    path("reviews/", include("reviews.urls", namespace="reviews")),
+    path("lists/", include("lists.urls", namespace="lists")),
+    path("conversations/", include("conversations.urls", namespace="conversations")),
     path("admin/", admin.site.urls),
 ]
 # 디버그모드일때 이미지파일과 주소를 참조하는걸 적어주는것

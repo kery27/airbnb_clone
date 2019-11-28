@@ -1,8 +1,22 @@
+import datetime
 from django.db import models
 from django.utils import timezone
 from core import models as core_models
 
 # 펜딩, 캔슬, 누가, 어떤 방을 방의 상태를 나타낸다고 보면 룸안에 있을수도있다만...
+
+
+class BookedDay(core_models.TimeStampedModel):
+
+    day = models.DateField()
+    reservation = models.ForeignKey("Reservation", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Booked Day"
+        verbose_name_plural = "Booked Days"
+
+    def __str__(self):
+        return str(self.day)
 
 
 class Reservation(core_models.TimeStampedModel):
@@ -42,27 +56,25 @@ class Reservation(core_models.TimeStampedModel):
 
     def is_finished(self):
         now = timezone.now().date()
-        return now > self.check_out
+        is_finished = now > self.check_out
+        if is_finished:
+            BookedDay.objects.filter(reservation=self).delete()
+        return is_finished
 
     is_finished.boolean = True
 
-
-class BookedDay(core_models.TimeStampedModel):
-
-    day = models.DateField()
-    reservation = models.ForeignKey("Reservation", on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = "Booked Day"
-        verbose_name_plural = "Booked Days"
-
     def save(self, *args, **kwargs):
-        if True:
+        if self.pk is None:
             start = self.check_in
             end = self.check_out
             difference = end - start
             existing_booked_day = BookedDay.objects.filter(
                 day__range=(start, end)
             ).exists()
-
+            if not existing_booked_day:
+                super().save(*args, **kwargs)
+                for i in range(difference.days + 1):
+                    day = start + datetime.timedelta(days=i)
+                    BookedDay.objects.create(day=day, reservation=self)
+                return
         return super().save(*args, **kwargs)

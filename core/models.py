@@ -1,4 +1,5 @@
 from django.db import models
+from . import managers
 
 
 class TimeStampedModel(models.Model):
@@ -10,6 +11,7 @@ class TimeStampedModel(models.Model):
     #
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
+    # objects = managers.CustomModelManager()
 
     # 이 모델을 쓰는 다른 모델들... 어차피 얘는 상속용 공통 클래스 이므로
     # 걔내들이 모델을 생성한다. 데이터를 생성할거기 때문에

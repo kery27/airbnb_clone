@@ -29,7 +29,7 @@ SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["airbnb-clone.czzfgjfmbk.ap-northeast-2.elasticbeanstalk.com"]
 # ALLOWED_HOSTS = "*"
 
 

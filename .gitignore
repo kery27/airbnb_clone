@@ -131,3 +131,7 @@ dmypy.json
 # 미디어 파일 업로드금지
 uploads/
 node_modules
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
