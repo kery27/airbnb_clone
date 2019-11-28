@@ -28,9 +28,9 @@ SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 
 DEBUG = True
 
-DEBUG = bool(os.environ.get("DEBUG"))
+#DEBUG = bool(os.environ.get("DEBUG"))
 
-if DEBUG:
+if DEBUG is False:
 
     DATABASES = {
         "default": {
