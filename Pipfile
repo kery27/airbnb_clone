@@ -15,6 +15,7 @@ django-countries = "*"
 django-seed = "*"
 request = "*"
 requests = "*"
+pipenv-to-requirments = "*"
 
 [requires]
 python_version = "3.7"
