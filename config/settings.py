@@ -162,10 +162,8 @@ LOGIN_URL = "/users/login/"
 
 DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
 STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "AKIAUVJXINFRDIA3LWO4")
-AWS_SECRET_ACCESS_KEY = os.environ.get(
-    "AWS_SECRET_ACCESS_KEY", "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"
-)
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = "airbnb-clone-garcia"
 AWS_AUTO_CREATE_BUCKET = True
 AWS_BUCKET_ACL = "public-read"
