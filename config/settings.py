@@ -28,7 +28,7 @@ SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 
 DEBUG = True
 
-#DEBUG = bool(os.environ.get("DEBUG"))
+# DEBUG = bool(os.environ.get("DEBUG"))
 
 if DEBUG is False:
 
@@ -49,8 +49,8 @@ else:
             "PASSWORD": os.environ.get("RDS_PASSWORD"),
             "PORT": "5432",
         }
+    }
 
-#ALLOWED_HOSTS = ["airbnb-clone.czzfgjfmbk.ap-northeast-2.elasticbeanstalk.com"]
 ALLOWED_HOSTS = "*"
 
 
@@ -64,7 +64,7 @@ DJANGO_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",   
+    "django.contrib.staticfiles",
 ]
 
 INSTALLED_APPS = [
@@ -84,7 +84,6 @@ PROJECT_APPS = [
     "reservations.apps.ReservationsConfig",
     "lists.apps.ListsConfig",
     "conversations.apps.ConversationsConfig",
-
 ]
 
 # INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
