@@ -65,16 +65,24 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
 ]
 
-# INSTALLED_APPS =
-#    "django.contrib.admin",
-#    "django.contrib.auth",
-#    "django.contrib.contenttypes",
-#    "django.contrib.sessions",
-#    "django.contrib.messages",
-#    "django.contrib.staticfiles",
-#
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "users",
+    "core",
+    "rooms",
+    "reivews",
+    "reservations",
+    "lists",
+    "conversations",
+]
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
@@ -84,9 +92,10 @@ PROJECT_APPS = [
     "reservations.apps.ReservationsConfig",
     "lists.apps.ListsConfig",
     "conversations.apps.ConversationsConfig",
+
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+# INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
