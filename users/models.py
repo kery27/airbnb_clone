@@ -51,6 +51,7 @@ class User(AbstractUser):
     )
 
     # objects = core_managers.CustomModelManager()
+    objects = core_managers.CustomUserManager()
 
     # 유저 모델이 변경되면 이걸 호출함
     # 업데이트 뷰를 써서 유저정보를 업데이트 했을때 변경이 일어난걸알고 이걸 불러
