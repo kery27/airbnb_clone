@@ -51,7 +51,7 @@ else:
         }
     }
 
-ALLOWED_HOSTS = "*"
+ALLOWED_HOSTS = [".elasticbeanstalk.com"]
 
 
 # Application definition
