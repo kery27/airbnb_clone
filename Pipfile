@@ -15,7 +15,8 @@ django-countries = "*"
 django-seed = "*"
 request = "*"
 requests = "*"
-pipenv-to-requirments = "*"
+django-storages = "*"
+boto3 = "*"
 psycopg2 = "*"
 
 [requires]
