@@ -64,8 +64,7 @@ DJANGO_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
-    
+    "django.contrib.staticfiles",   
 ]
 
 INSTALLED_APPS = [
@@ -75,13 +74,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "users",
-    "core",
-    "rooms",
-    "reivews",
-    "reservations",
-    "lists",
-    "conversations",
 ]
 
 PROJECT_APPS = [
