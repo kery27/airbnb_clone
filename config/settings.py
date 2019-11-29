@@ -50,8 +50,8 @@ else:
             "PORT": "5432",
         }
 
-ALLOWED_HOSTS = ["airbnb-clone.czzfgjfmbk.ap-northeast-2.elasticbeanstalk.com"]
-# ALLOWED_HOSTS = "*"
+#ALLOWED_HOSTS = ["airbnb-clone.czzfgjfmbk.ap-northeast-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = "*"
 
 
 # Application definition
