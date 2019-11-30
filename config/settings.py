@@ -51,7 +51,7 @@ else:
         }
     }
 
-ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
+ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost", "172.31.14.81"]
 # ALLOWED_HOSTS = []
 
 
