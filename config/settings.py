@@ -52,7 +52,7 @@ else:
     }
 
 # ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
-ALLOWED_HOSTS = ["airbnb-clone-dev.ap-northeast-2.elasticbeanstalk.com", "localhost"]
+ALLOWED_HOSTS = [".elasticbeanstalk.com"]
 
 # ALLOWED_HOSTS = []
 
