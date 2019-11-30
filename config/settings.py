@@ -51,8 +51,8 @@ else:
         }
     }
 
-# ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
+# ALLOWED_HOSTS = []
 
 
 # Application definition
