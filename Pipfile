@@ -7,6 +7,7 @@ verify_ssl = true
 pylint = "*"
 flake8 = "*"
 black = "*"
+awsebcli = "*"
 
 [packages]
 django = "==2.2.5"
@@ -18,6 +19,7 @@ requests = "*"
 django-storages = "*"
 boto3 = "*"
 awsebcli = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
