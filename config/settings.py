@@ -26,11 +26,11 @@ SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 # 개발인지 운영인지를 구분짓는 플래그래
 # 이값을 폴스로 바꾸면 404에러를 뱉고 트루면 어디가 에런지 알려주는것이라네
 
-DEBUG = True
+DEBUG = False
 
 # DEBUG = bool(os.environ.get("DEBUG"))
 
-if DEBUG is False:
+if DEBUG:
 
     DATABASES = {
         "default": {
@@ -145,7 +145,7 @@ STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 AUTH_USER_MODEL = "users.User"
 
