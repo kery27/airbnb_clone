@@ -10,13 +10,13 @@
 {% block content %}
 
     <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
-        <h2>Search!</h2>
         <form method="get" action="{% url "rooms:search" %}">
             <button class="btn bg-red-500 text-white">Search</button>
             {{form.as_p}}
         </form>
 
         <h2>Results</h2>
+        <p></p>
 
         {% for room in rooms %}
             <a href="{% url 'rooms:detail' room.pk %}">
