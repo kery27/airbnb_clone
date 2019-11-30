@@ -17,7 +17,7 @@ request = "*"
 requests = "*"
 django-storages = "*"
 boto3 = "*"
-psycopg2 = "*"
+awsebcli = "*"
 
 [requires]
 python_version = "3.7"
