@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
+SECRET_KEY = os.environ.get("DJANGO_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 개발인지 운영인지를 구분짓는 플래그래
@@ -51,8 +51,8 @@ else:
         }
     }
 
-# ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -163,6 +163,7 @@ MEDIA_URL = "/media/"
 
 LOGIN_URL = "/users/login/"
 
+"""
 DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
 STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
@@ -174,3 +175,4 @@ AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+"""
