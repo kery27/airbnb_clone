@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET")
+SECRET_KEY = "#m8vuz05k4@epzxv)w^h2ohlwqt%rn%($5$x$dhe01evo4a=df"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 개발인지 운영인지를 구분짓는 플래그래
@@ -30,7 +30,7 @@ DEBUG = True
 
 # DEBUG = bool(os.environ.get("DEBUG"))
 
-if DEBUG is False:
+if DEBUG:
 
     DATABASES = {
         "default": {
@@ -51,8 +51,8 @@ else:
         }
     }
 
-ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost", "172.31.14.81"]
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost", "172.31.14.81"]
+ALLOWED_HOSTS = ["172d84d9.ngrok.io"]
 
 
 # Application definition

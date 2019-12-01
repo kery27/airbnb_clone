@@ -11,13 +11,18 @@
         
         <!--<div class="rounded-lg bg-gray-800 -mx-40 h-50vh p-48 mb-12 bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1536315238512-4c8cebdaaf93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop)"></div>-->
         <!--<div class="rounded-lg bg-gray-800 -mx-40 mb-12 p-166 bg-cover" style="background-image:url(https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop)"></div>-->
-        <div class="rounded-lg bg-gray-800 -mx-40 mb-12 p-166 bg-cover bg-bottom" style="background-image:url(https://airbnb-clone-final.s3.amazonaws.com/uploads/bg-photo.jpg)">
-            <div class="w-64 opacity-75">
-                <input class="search-box1 rounded-lg border-b font-medium text-gray-900 placeholder-gray-900 py-6 shadow-md hover:shadow-lg focus:outline-none" placeholder="널 부자로 만들어줄 프로젝트">
+        <div class="z-0 rounded-lg bg-gray-800 xl:-mx-32 mb-12 h-64 xl:h-75vh bg-cover bg-bottom" style="background-image:url(https://airbnb-clone-final.s3.amazonaws.com/uploads/bg-photo.jpg)">
+            <div class="px-10 xl:px-64 pt-16 opacity-50">
+                <form method="get" action="{% url 'rooms:search' %}" >
+                <input class="search-box1 cursor-auto rounded-lg border-b font-medium text-gray-700 placeholder-gray-700 py-6 shadow-md hover:shadow-lg focus:outline-none text-center" name="city" placeholder="널 부자로 만들어줄 프로젝트">
+                </form>
             </div>
         </div>
+        <div class ="border-t-2 border-solid pt-10 mb-10">
+            <h1 class ="font-medium text-3xl text-center ">Room List</h1>
+        </div>
 
-        <div class="flex flex-wrap -mx-40 mb-10">
+        <div class="flex flex-wrap lx:-mx-40 mb-10">
         {% for room in rooms  %}
             {% include 'mixins/room_card.html' with room=room %}
         {% endfor %}

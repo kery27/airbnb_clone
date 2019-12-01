@@ -44,9 +44,16 @@
             {% endfor %}
         </div>
     </div>
-
-    <div class="container mx-auto flex justify-around pb-56">
-        <div class="w-1/2">
+    <div class="visible mb-20">
+        <div class="h-64 bg-center bg-cover" style="background-image:url({{room.first_photo}})"></div>
+        <div class="h-64 flex flex-wrap">
+            {% for photo in room.get_next_four_photos %}
+                <div style="background-image:url({{photo.file.url}})" class="w-1/2 h-auto bg-cover bg-center border-gray-700 border"></div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container flex justify-around pb-10">
+        <div class="w-11/12">
             <div class="flex justify-between">
                 <div class="mb-5">
                     <h4 class="text-3xl font-medium mb-px">{{room.name}}</h4>
@@ -124,7 +131,11 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/3">
+    </div>
+
+    <div class="container mx-auto flex justify-around pb-10">
+        
+        <div class="w-11/12">
             {% if room.host == user %}
                 <a href="{% url 'rooms:edit' room.pk %}" class="btn-link block">Edit Room</a>
             {% else %}
@@ -147,7 +158,9 @@
                                     {% elif is_booked_bool %}
                                         <span class="cal-number bg-gray-200 text-gray-400 line-through">{{day}}</span>
                                     {% else %}
-                                        <a href="{% url 'reservations:create' room.pk day.year day.month day.number %}" class="cal-number bg-gray-200 text-gray-700 hover:bg-teal-400 hover:text-white hover:font-medium">{{day}}</a>
+                                        <!--<a href="{% url 'reservations:create' room.pk day.year day.month day.number %}" class="cal-number bg-gray-200 text-gray-700 hover:bg-teal-400 hover:text-white hover:font-medium">{{day}}</a>-->
+                                        <a href="#" onClick='alert("예약기능 테스트중")' class="cal-number bg-gray-200 text-gray-700 hover:bg-teal-400 hover:text-white hover:font-medium">{{day}}</a>
+                                        
                                     {% endif %}
                                 {% else %}
                                   <span></span>
