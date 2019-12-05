@@ -22,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("DJANGO_SECRET")
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 # 개발인지 운영인지를 구분짓는 플래그래
 # 이값을 폴스로 바꾸면 404에러를 뱉고 트루면 어디가 에런지 알려주는것이라네
@@ -175,4 +176,3 @@ AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
-
